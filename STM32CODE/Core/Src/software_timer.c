@@ -10,80 +10,21 @@
 
 #include "software_timer.h"
 
-int timer1_counter = 0;
-int timer1_flag = 0;
-int timer2_counter = 0;
-int timer2_flag = 0;
-int timer3_counter = 0;
-int timer3_flag = 0;
-int timer4_counter = 0;
-int timer4_flag = 0;
-int timer5_counter = 0;
-int timer5_flag = 0;
+int timer_counter[N0_OF_BUTTONS];
+int timer_flag[N0_OF_BUTTONS];
 
-void setTimer1(int duration)
+void setTimer(int duration, int index)
 {
-	timer1_counter = duration;
-	timer1_flag = 0;
+	timer_counter[index] = duration/TICK;
+	timer_flag[index] = 0;
 }
-void timer1Run()
+
+void timerRun(int index)
 {
-	timer1_counter--;
-	if(timer1_counter <= 0)
+	timer_counter[index]--;
+	if(timer_counter[index] <= 0)
 	{
-		timer1_flag = 1;
-	}
-}
-void setTimer2(int duration)
-{
-	timer2_counter = duration;
-	timer2_flag = 0;
-}
-void timer2Run()
-{
-	timer2_counter--;
-	if(timer2_counter <= 0)
-	{
-		timer2_flag = 1;
-	}
-}
-void setTimer3(int duration)
-{
-	timer3_counter = duration;
-	timer3_flag = 0;
-}
-void timer3Run()
-{
-	timer3_counter--;
-	if(timer3_counter <= 0)
-	{
-		timer3_flag = 1;
-	}
-}
-void setTimer4(int duration)
-{
-	timer4_counter = duration;
-	timer4_flag = 0;
-}
-void timer4Run()
-{
-	timer4_counter--;
-	if(timer4_counter <= 0)
-	{
-		timer4_flag = 1;
-	}
-}
-void setTimer5(int duration)
-{
-	timer5_counter = duration;
-	timer5_flag = 0;
-}
-void timer5Run()
-{
-	timer5_counter--;
-	if(timer5_counter <= 0)
-	{
-		timer5_flag = 1;
+		timer_flag[index] = 1;
 	}
 }
 
