@@ -10,7 +10,10 @@
 
 #include "global.h"
 
-extern int timer_flag[N0_OF_BUTTONS];
+// Number of timer flag be used
+#define N0_OF_FLAG 4
+
+extern int timer_flag[N0_OF_FLAG];
 
 void setTimer(int duration, int index);
 void timerRun(int index);

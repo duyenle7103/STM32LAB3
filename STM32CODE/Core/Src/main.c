@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "input_processing.h"
+#include "fsm_automatic.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -96,7 +96,8 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  fsm_for_input_processing();
+	  fsm_automatic_run(0);
+	  fsm_automatic_run(1);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

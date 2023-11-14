@@ -11,7 +11,6 @@
 #include "global.h"
 
 void button_reading(void);
-unsigned char is_button_pressed(unsigned char index);
-unsigned char is_button_pressed_1s(unsigned char index);
+unsigned char is_button_pressed(uint8_t index);
 
 #endif /* INC_INPUT_READING_H_ */

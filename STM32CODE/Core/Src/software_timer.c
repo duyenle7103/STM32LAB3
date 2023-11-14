@@ -10,8 +10,8 @@
 
 #include "software_timer.h"
 
-int timer_counter[N0_OF_BUTTONS];
-int timer_flag[N0_OF_BUTTONS];
+int timer_counter[N0_OF_FLAG];
+int timer_flag[N0_OF_FLAG];
 
 void setTimer(int duration, int index)
 {

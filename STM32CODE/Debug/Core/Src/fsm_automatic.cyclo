@@ -1,0 +1,2 @@
+../Core/Src/fsm_automatic.c:10:6:on_light	3
+../Core/Src/fsm_automatic.c:31:6:fsm_automatic_run	8
