@@ -7,25 +7,14 @@
 
 #include "fsm_automatic.h"
 
-void on_light(int color, int index)
+void set_env()
 {
-	switch (color)
-	{
-	case RED:
-		HAL_GPIO_WritePin(LED_port[index][RED], LED_pin[index][RED], RESET);
-		HAL_GPIO_WritePin(LED_port[index][AMBER], LED_pin[index][AMBER], SET);
-		HAL_GPIO_WritePin(LED_port[index][GREEN], LED_pin[index][GREEN], SET);
-		break;
-	case AMBER:
-		HAL_GPIO_WritePin(LED_port[index][RED], LED_pin[index][RED], SET);
-		HAL_GPIO_WritePin(LED_port[index][AMBER], LED_pin[index][AMBER], RESET);
-		HAL_GPIO_WritePin(LED_port[index][GREEN], LED_pin[index][GREEN], SET);
-		break;
-	default:
-		HAL_GPIO_WritePin(LED_port[index][RED], LED_pin[index][RED], SET);
-		HAL_GPIO_WritePin(LED_port[index][AMBER], LED_pin[index][AMBER], SET);
-		HAL_GPIO_WritePin(LED_port[index][GREEN], LED_pin[index][GREEN], RESET);
-	}
+	status[SINGLE_LED1] = AUTO_NOTHING;
+	status[SINGLE_LED2] = AUTO_NOTHING;
+	status_man = MAN_RED;
+	on_light(RED, SINGLE_LED1);
+	on_light(RED, SINGLE_LED2);
+	setTimer(DURATION_FOR_BLINKING, BLINKING_LED);
 }
 
 void fsm_automatic_run(int index)
@@ -35,30 +24,42 @@ void fsm_automatic_run(int index)
 	case INIT:
 		on_light(RED, index);
 		status[index] = AUTO_RED;
-		setTimer(500, 0);
+		setTimer(time_display[RED], index);
 		break;
 	case AUTO_RED:
 		on_light(RED, index);
-		if (timer_flag[0] == 1)
+		if (timer_flag[index] == 1)
 		{
 			status[index] = AUTO_GREEN;
-			setTimer(300, 0);
+			setTimer(time_display[GREEN], index);
+		}
+		if (is_button_pressed(BUTTON0) == 1)
+		{
+			set_env();
 		}
 		break;
 	case AUTO_AMBER:
 		on_light(AMBER, index);
-		if (timer_flag[0] == 1)
+		if (timer_flag[index] == 1)
 		{
 			status[index] = AUTO_RED;
-			setTimer(500, 0);
+			setTimer(time_display[RED], index);
+		}
+		if (is_button_pressed(BUTTON0) == 1)
+		{
+			set_env();
 		}
 		break;
 	case AUTO_GREEN:
 		on_light(GREEN, index);
-		if (timer_flag[0] == 1)
+		if (timer_flag[index] == 1)
 		{
 			status[index] = AUTO_AMBER;
-			setTimer(200, 0);
+			setTimer(time_display[AMBER], index);
+		}
+		if (is_button_pressed(BUTTON0) == 1)
+		{
+			set_env();
 		}
 		break;
 	default:

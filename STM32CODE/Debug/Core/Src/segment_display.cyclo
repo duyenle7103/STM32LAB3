@@ -1,0 +1,5 @@
+../Core/Src/segment_display.c:10:6:display7SEG	11
+../Core/Src/segment_display.c:115:6:choose7SEG	5
+../Core/Src/segment_display.c:145:6:update7SEG	1
+../Core/Src/segment_display.c:151:6:displayNum	3
+../Core/Src/segment_display.c:165:6:updateLedBuffer	1

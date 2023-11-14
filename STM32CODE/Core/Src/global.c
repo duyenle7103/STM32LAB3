@@ -27,10 +27,23 @@ uint16_t LED_pin[N0_OF_ROAD][N0_OF_LED] = {
 		{RED2_Pin, AMBER2_Pin, GREEN2_Pin}
 };
 
-// Variable for store mode
-unsigned int mode = 0;
+// Define 7 segment led anode's port
+GPIO_TypeDef *ANODE7SEG_port[N0_OF_7SEG] = {
+		LED0_GPIO_Port, LED1_GPIO_Port, LED2_GPIO_Port, LED3_GPIO_Port
+};
+// Define 7 segment led anode's pin
+uint16_t ANODE7SEG_pin[N0_OF_7SEG] = {
+		LED0_Pin, LED1_Pin, LED2_Pin, LED3_Pin
+};
+
 // Array store time display for each color
 unsigned int time_display[N0_OF_LED];
 
 // Define array to store status of LEDs on 2 road
-unsigned int status[2];
+unsigned int status[N0_OF_ROAD];
+// Define variable to store status manual
+unsigned int status_man = MAN_NOTHING;
+
+// Define led buffer for scanning
+unsigned int index_led = 0;
+unsigned int led_buffer[N0_OF_7SEG] = {1, 2, 3, 4};

@@ -1,0 +1,3 @@
+../Core/Src/led_display.c:10:6:on_light	3
+../Core/Src/led_display.c:31:6:toggle_led	3
+../Core/Src/led_display.c:52:6:led_blinking	1

@@ -1,0 +1,5 @@
+../Core/Src/segment_display.c:10:6:display7SEG	16	static
+../Core/Src/segment_display.c:115:6:choose7SEG	16	static
+../Core/Src/segment_display.c:145:6:update7SEG	16	static
+../Core/Src/segment_display.c:151:6:displayNum	8	static
+../Core/Src/segment_display.c:165:6:updateLedBuffer	16	static

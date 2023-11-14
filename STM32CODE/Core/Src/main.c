@@ -21,7 +21,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "timer.h"
 #include "fsm_automatic.h"
+#include "fsm_manual.h"
+#include "segment_display.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -66,7 +69,19 @@ static void MX_TIM2_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+	// Preset time display for each color RED = 5 seconds, AMBER = 2 seconds, GREEN = 3 seconds
+	time_display[RED] = 5000;
+	time_display[AMBER] = 2000;
+	time_display[GREEN] = 3000;
 
+	// Set initial status for led on each road
+	status[SINGLE_LED1] = AUTO_RED;
+	setTimer(time_display[RED], SINGLE_LED1);
+	status[SINGLE_LED2] = AUTO_GREEN;
+	setTimer(time_display[GREEN], SINGLE_LED2);
+
+	// Set timer for scanning process
+	setTimer(DURATION_FOR_SCAN, ANODE7SEG_LED);
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -89,15 +104,17 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_TIM_Base_Start_IT(&htim2);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  fsm_automatic_run(0);
-	  fsm_automatic_run(1);
+	  fsm_automatic_run(SINGLE_LED1);
+	  fsm_automatic_run(SINGLE_LED2);
+	  fsm_manual_run();
+	  displayNum();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
