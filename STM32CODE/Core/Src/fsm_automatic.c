@@ -19,6 +19,7 @@ void set_env()
 
 void fsm_automatic_run(int index)
 {
+	updateLedBuffer(timer_counter[SINGLE_LED1]*TICK/SECOND, timer_counter[SINGLE_LED2]*TICK/SECOND);
 	switch (status[index])
 	{
 	case INIT:

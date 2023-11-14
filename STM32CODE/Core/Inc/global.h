@@ -34,6 +34,8 @@ extern uint16_t LED_pin[N0_OF_ROAD][N0_OF_LED];
 
 // Number of 7 segment led
 #define N0_OF_7SEG 4
+// Max range of display time
+#define MAX_RANGE 99
 // Define 7 segment led anode's port and pin
 extern GPIO_TypeDef *ANODE7SEG_port[N0_OF_7SEG];
 extern uint16_t ANODE7SEG_pin[N0_OF_7SEG];
@@ -48,7 +50,9 @@ extern unsigned int led_buffer[N0_OF_7SEG];
 // Time duration for blink an LED in 2 Hz
 #define DURATION_FOR_BLINKING 250
 // Time duration for scan 7 segment led
-#define DURATION_FOR_SCAN 250
+#define DURATION_FOR_SCAN 50
+// Time of 1 second
+#define SECOND 1000
 // Define index for using software_timer
 enum single_index{SINGLE_LED1, SINGLE_LED2, BLINKING_LED, ANODE7SEG_LED};
 
@@ -67,7 +71,8 @@ enum single_index{SINGLE_LED1, SINGLE_LED2, BLINKING_LED, ANODE7SEG_LED};
 extern unsigned int status[N0_OF_ROAD];
 extern unsigned int status_man;
 
-// Declare variable to store mode and time display for each color
+// Declare variable to store time display for each color
 extern unsigned int time_display[N0_OF_LED];
+extern int increment;
 
 #endif /* INC_GLOBAL_H_ */

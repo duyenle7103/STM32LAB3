@@ -38,6 +38,8 @@ uint16_t ANODE7SEG_pin[N0_OF_7SEG] = {
 
 // Array store time display for each color
 unsigned int time_display[N0_OF_LED];
+// Variable store increment for each color
+int increment = 0;
 
 // Define array to store status of LEDs on 2 road
 unsigned int status[N0_OF_ROAD];
