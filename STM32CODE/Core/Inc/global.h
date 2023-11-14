@@ -10,7 +10,9 @@
 
 #include "main.h"
 
-#define N0_OF_BUTTONS 3 // We aim to work with more than one buttons
+// We aim to work with more than one buttons
+#define N0_OF_BUTTONS 3
+// Timer interrupt duration is 10ms
 #define TICK 10
 
 #define INIT 1
